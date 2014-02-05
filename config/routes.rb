@@ -5,9 +5,10 @@ Twetter::Application.routes.draw do
   devise_scope :user do
     get "sign_in", :to => "devise/sessions#new"
     get "users/:id", :to => "users#show", :as => :user_show
+    get "/:username", to: "users#show"
   end
   
-  get "/:username", to: "user#show"
+  get "/:username", to: "users#show"
   
   
   authenticated :user do
