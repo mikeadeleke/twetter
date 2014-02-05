@@ -8,7 +8,6 @@ Twetter::Application.routes.draw do
     get "/:username", to: "users#show"
   end
   
-  get "/:username", to: "users#show"
   
   
   authenticated :user do
