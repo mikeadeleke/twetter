@@ -1,8 +1,15 @@
 Twetter::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :sessions => 'users/sessions' } 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
+  devise_scope :user do
+    get "sign_in", :to => "devise/sessions#new"
+    get "users/:id", :to => "users#show", :as => :user_show
+  end
+  
+  get "/:username", to: "user#show"
+  
+  
   authenticated :user do
     resources :follows, :except => [:new, :edit, :show, :update]
     resources :twets, :except => [:new, :edit, :show, :update]
@@ -12,6 +19,7 @@ Twetter::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root :to => 'home#index'
 
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
