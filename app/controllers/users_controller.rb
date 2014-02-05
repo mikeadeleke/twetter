@@ -14,7 +14,6 @@ class UsersController < Devise::SessionsController
   end
   
   def update
-   # edit here
   end
   
   private 
