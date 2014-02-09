@@ -9,7 +9,9 @@ class TwetsController < ApplicationController
   #   @twets # => All twets defaultly shown to the authenticated user.
   #
   def index
+    puts "are you here?"
     get_twets
+    puts "yes I am"
   end
 
   # POST /twets
@@ -29,7 +31,8 @@ class TwetsController < ApplicationController
     @twet = current_user.twets.create(twet_params)
     if @twet.valid?
       flash[:success] = "Your twet was shared"
-      redirect_to :action => :index and return
+      puts "You succeeded!"
+      redirect_to follows_path
     else
       get_twets
       flash[:error] = "Your twet could not be saved"
