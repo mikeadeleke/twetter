@@ -1,3 +1,4 @@
+=begin
 require 'ffaker'
 
 namespace :seed do
@@ -17,3 +18,4 @@ namespace :seed do
     end
   end
 end
+=end
